@@ -1,0 +1,46 @@
+{
+  "name": "one-pj",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/charts": "^2.2.7",
+    "@ant-design/nextjs-registry": "^1.0.2",
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@prisma/client": "^6.7.0",
+    "axios": "^1.9.0",
+    "bcrypt": "^5.1.1",
+    "framer-motion": "^12.9.7",
+    "jsonwebtoken": "^9.0.2",
+    "next": "15.3.1",
+    "nodemailer": "^7.0.2",
+    "react": "^19.1.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.1.0",
+    "redis": "^5.0.1",
+    "tailwindcss": "^3.4.0",
+    "three": "^0.176.0",
+    "vanta": "^0.5.24"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/redis": "^4.0.11",
+    "@types/three": "^0.176.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.1",
+    "prisma": "^6.7.0",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,52 @@
+:root {
+  --foreground-light: rgb(40, 42, 45);
+  --foreground-weight: rgb(34, 35, 37);
+  --background-light: rgb(249, 249, 249);
+  --background-weight: rgb(218, 219, 221);
+  --icon-background: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-light: #f5f5f5;
+    --foreground-weight: #bdbdbd;
+    --background-light: #1e1e1e;
+    --background-weight: #121212;
+    --icon-background: #bdbdbd;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background-weight);
+  color: var(--foreground-light);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.no-padding .ant-card-body {
+  padding: 4px !important;
+}

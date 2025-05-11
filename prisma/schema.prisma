@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  id          Int     @id @default(autoincrement())
+  path        String  @db.VarChar(100)
+  name        String  @db.VarChar(100)
+  description String? @db.VarChar(100)
+  icon        String? @db.VarChar(200)
+  deleted     Int     @default(0)
+  item        item[]
+}
+
+model item {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  description String?  @db.VarChar(100)
+  icon        String?  @db.VarChar(200)
+  link        String   @db.VarChar(200)
+  category_id Int
+  deleted     Int      @default(0)
+  category    category @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "category_id")
+
+  @@index([category_id], map: "category_id_idx")
+}
+
+model permission {
+  id          Int               @id @default(autoincrement())
+  path        String            @db.VarChar(100)
+  description String?           @db.VarChar(100)
+  action      permission_action @default(no)
+}
+
+model role {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(100)
+  description String? @db.VarChar(100)
+  permissions Json
+}
+
+model user {
+  id       Int    @id @default(autoincrement())
+  username String @db.VarChar(100)
+  password String @db.VarChar(200)
+  mail     String @db.VarChar(200)
+  roles    Json
+}
+
+model click_history {
+  id          Int      @id @default(autoincrement())
+  relation_id Int
+  timestamp   DateTime @db.Timestamp(0)
+}
+
+model meta {
+  path        String  @id @db.VarChar(100)
+  title       String? @db.VarChar(100)
+  description String? @db.VarChar(200)
+  keywords    String? @db.VarChar(50)
+  icon        String? @db.VarChar(200)
+}
+
+model visit_history {
+  id        Int      @id @default(autoincrement())
+  path      String   @db.VarChar(100)
+  timestamp DateTime @db.Timestamp(0)
+}
+
+enum permission_action {
+  no
+  read
+  write
+}

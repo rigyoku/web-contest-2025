@@ -1,0 +1,32 @@
+version: '0.0.1'
+
+name: web-contest
+
+services:
+  mysql:
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    image: "mysql:8.0.32"
+    ports:
+      - "30000:3306"
+    volumes:
+      - /Applications/htc-3/docker/volumes:/local_path
+    restart: unless-stopped
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+    ports:
+      - "30001:6379"
+    volumes:
+      - /Applications/htc-3/docker/volumes:/local_path
+    restart: unless-stopped
+  mailhog:
+    container_name: mailhog
+    image: "mailhog/mailhog:v1.0.1"
+    ports:
+      - "30002:8025" # web ui
+      - "30003:1025" # smtp
+    volumes:
+      - /Applications/htc-3/docker/volumes:/local_path
+    restart: unless-stopped
